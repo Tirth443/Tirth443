@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Generating random password</h1>
+    <input type="text" id="inputvalue">
+    <button onclick="generate()">click here</button>
+    <script>
+        const inputvalue=document.getElementById("inputvalue");
+        const length=12;
+
+        const upperCase="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const lowerCase="abcdefghijklmnopqrstuvwxyz";
+        const numbers="123456789";
+        const specialChar="!@#$%^&*()_+";
+
+        const allchar=upperCase+lowerCase+numbers+specialChar
+
+        function generate(){
+            let password="";
+
+           // password+=upperCase[Math.floor(Math.random()*upperCase.length)];
+            //password+=lowerCase[Math.floor(Math.random()*lowerCase.length)];
+         //   password+=numbers[Math.floor(Math.random()*numbers.length)];
+           // password+=specialChar[Math.floor(Math.random()*specialChar.length)];
+
+            while(password.length<length){
+                password+=allchar[Math.floor(Math.random()*allchar.length)];
+            }
+            inputvalue.value=password;
+        }
+    </script>
+</body>
+</html>
