@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <!--todolist using crud
+            c=create
+            r=read
+            u=update
+            d=delete-->
+
+            <input type="text" id="inputvalue">
+            <button onclick="todo()">add</button>
+            <ul id="datacame"></ul>
+            <script>
+                function todo(){
+                var a=document.getElementById("inputvalue").value;
+                if(a=="")
+            {
+                alert("enter data");
+            }else{
+                var li=document.createElement("li");
+                li.innerHTML=a;
+                document.getElementById("datacame").appendChild(li);
+
+                var del=document.createElement("button");
+                del.innerHTML="delete";
+                li.appendChild(del);
+
+                del.addEventListener('click',()=>{
+                    li.remove();
+                })
+
+                var ed=document.createElement("button");
+                ed.innerHTML="edit";
+                li.appendChild(ed);
+
+                ed.addEventListener('click',()=>{
+                    document.getElementById("inputvalue").value = li.firstChild.nodeValue;
+                    li.remove();
+                })
+                
+            }
+            
+        }
+
+            
+                
+
+
+
+
+
+            </script>
+
+</body>
+</html>
