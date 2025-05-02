@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <div class="firstname">
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname">
+            <p class="error">
+               
+            </p>
+
+        </div>
+        <div class="lastname">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname">
+            <p class="error">
+               
+            </p>
+        </div>
+        <div class="btn">
+            <button id="form"> submit</button>
+        </div>
+    </form>
+    <script>
+        form.addEventListener('click',(a)=>{
+            a.preventDefault();
+            valid();
+        })
+
+        const setError=(element,message)=>{
+            const parent=element.parentElement;
+            const error=parent.querySelector('.error');
+            error.innerHTML=message;
+        }
+
+        const setSuccess=(element)=>{
+            const parent=element.parentElement;
+            const error=parent.querySelector('.error');
+            error.innerHTML="";
+        }
+         
+        function valid(){
+            const firstname=document.getElementById('firstname');
+            const lastname=document.getElementById('lastname');
+
+            if(firstname.value==""){
+                setError(firstname,"Please enter your first name");
+              }
+              else{
+                setSuccess(firstname);
+              }
+
+              if(lastname.value==""){
+                setError(lastname,"Please enter your last name");
+              }
+              else{
+                setSuccess(lastname);
+              }
+        }
+        
+
+    </script>
+</body>
+</html>
