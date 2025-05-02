@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>API Data in Boxes</title>
+    <style>
+        #root {
+            background-color: #4be10b;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .data-box {
+            background-color: #100101;
+            border: 1px solid #f30909;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .data-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .data-box p {
+            margin: 8px 0;
+            color: #ede8e8;
+            line-height: 1.4;
+        }
+
+        .data-box p:first-child {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .data-box p:nth-child(2) {
+            color: #4be10b;
+            font-size: 0.9em;
+        }
+
+        .data-box p:nth-child(3) {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .data-box p:last-child {
+            color: #0ea8f0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+            
+            
+        }
+
+        @media (max-width: 768px) {
+            #root {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #root {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(res => res.json())
+            .then(data => {
+                const root = document.getElementById('root');
+                root.innerHTML = data.map(item => `
+                    <div class="data-box">
+                        <p>User ID: ${item.userId}</p>
+                        <p>Post ID: ${item.id}</p>
+                        <p>${item.title}</p>
+                        <p>${item.body}</p>
+                    </div>
+                `).join('');
+            })
+            
+    </script>
+</body>
+</html>
